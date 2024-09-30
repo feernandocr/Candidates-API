@@ -27,6 +27,9 @@ public class CandidateServiceImpl implements CandidateService {
 
 	@Override
 	public CandidateEntity registerCandidate(CandidateEntity candidate) {
+		 if (candidate.getName() == null) {
+		        throw new RuntimeException("Error interno del servidor"); // Esto provocará un error 500
+		    }
 		return candidateRepository.save(candidate);
 	}
 
